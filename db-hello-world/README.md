@@ -7,7 +7,8 @@ In-class assignment 10/20.
 1) Install git (either GUI or command-line) from https://git-scm.com/downloads. All of the commands here are for the git command-line interface and work the same on windows, mac, or linux. All git commands start with the word 'git'.
 
 
-2) Cclone this git repository. Cloning means you are downloading a copy of the remote repository and all of the code that is in there. You are going to make local changes, and then eventually push them back to the remote location.
+2) Clone this git repository. Cloning means you are downloading a copy of the remote repository and all of the code that is in there. You are going to make local changes, and then eventually push them back to the remote location.
+
 git clone https://github.com/sjuDB/[your-repo-name].git
 
 
@@ -15,14 +16,17 @@ git clone https://github.com/sjuDB/[your-repo-name].git
 
 
 4) Get the status of the repository using the following command (or a GUI). it should tell you that there is an untracked file, or that there are 'changes not staged for commit'
+
 git status
 
 
 5) In order to save the change locally, you need to make git aware that you want to save the file using 'git add' on the file. 
+
 git add README.md
 
 
 6) Look at the status of the repository again. It should now tell you that there is a single file that has been modified and is 'stagesd for commit'. This means that git is aware there has been a modification, but it hasn't saved the changes yet.
+
 git status
 
 
@@ -36,6 +40,7 @@ git commit -m "Added name to README,md file per instructions"
 
 
 git status
+
 git push 
 
 
