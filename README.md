@@ -51,4 +51,4 @@ git push
 This is where your should modify.
 
 
-My name is: [Mohammed AL-Hazza]
+My name is: [Eleftherios Lazaridis]
