@@ -44,10 +44,7 @@ $_SESSION['PatientID'] = $PatientID;
 <?php
 session_start();
 
-$localhost = 'localhost';
-$dusername = 'root';
-$dpassword = 'root';
-$database = 'hospital';
+require 'common.php';
 $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
     die("Connection failed: " . $conn->connect_error);

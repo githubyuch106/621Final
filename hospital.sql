@@ -27,26 +27,28 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `employee` (
-  `EmpID` char(6) NOT NULL,
+  `EmpID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `SSN` char(9) NOT NULL,
   `Fname` varchar(40) NOT NULL,
   `Lname` varchar(40) NOT NULL,
   `PhoneNumber` char(10) NOT NULL,
   `Salary` int(10) NOT NULL,
   `Password` varchar(20) NOT NULL,
-  `JobTitle` varchar(30) NOT NULL
+  `JobTitle` varchar(30) NOT NULL,
+  `SecurityQuestion` text default null,
+  `SecurityAnswer` text default null
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary`, `Password`, `JobTitle`) VALUES
-('111', '23435465', 'Mohammed', 'Alhazza', '2169398627', 5000, 'doctor1', 'Doctor'),
-('222', '3454657', 'Ali', 'AL-Mohammad', '2677749290', 6000, 'doctor2', 'Doctor'),
-('333', '23243546', 'Jena', 'Tom', '223545678', 6000, 'doctor3', 'Doctor'),
-('444', '3456576', 'Nancy', 'Jon', '32452435', 3000, 'nurse4', 'nurse'),
-('admin', '2345678', 'admin', 'admin', '999', 100000, 'admin', 'admin');
+INSERT INTO `employee` (`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary`, `Password`, `JobTitle`, `SecurityQuestion`, `SecurityAnswer`) VALUES
+('111', '23435465', 'Mohammed', 'Alhazza', '2169398627', 5000, 'doctor1', 'Doctor', NULL, NULL),
+('222', '3454657', 'Ali', 'AL-Mohammad', '2677749290', 6000, 'doctor2', 'Doctor', "Where were you born?", "Mississippi"),
+('333', '23243546', 'Jena', 'Tom', '223545678', 6000, 'doctor3', 'Doctor', NULL, NULL),
+('444', '3456576', 'Nancy', 'Jon', '32452435', 3000, 'nurse4', 'nurse', NULL, NULL),
+('admin', '2345678', 'admin', 'admin', '999', 100000, 'admin', 'admin', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -55,8 +57,8 @@ INSERT INTO `employee` (`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary
 --
 
 CREATE TABLE `governs` (
-  `EmpID` char(6) DEFAULT NULL,
-  `RoomID` char(6) NOT NULL
+  `EmpID` int DEFAULT NULL,
+  `RoomID` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -66,8 +68,8 @@ CREATE TABLE `governs` (
 --
 
 CREATE TABLE `medicine` (
-  `MedicineID` char(6) NOT NULL,
-  `ReportID` char(6) NOT NULL,
+  `MedicineID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `ReportID` int NOT NULL,
   `Treatment` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -78,7 +80,7 @@ CREATE TABLE `medicine` (
 --
 
 CREATE TABLE `patient` (
-  `PatientID` char(6) NOT NULL,
+  `PatientID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `Fname` varchar(40) NOT NULL,
   `Lname` varchar(40) NOT NULL,
   `Address` varchar(40) NOT NULL,
@@ -86,12 +88,14 @@ CREATE TABLE `patient` (
   `Sex` varchar(20) NOT NULL,
   `Weight` int(4) NOT NULL,
   `Height` int(2) NOT NULL,
-  `EmpID` char(6) DEFAULT NULL,
+  `EmpID` int DEFAULT NULL,
   `Vitals` varchar(20) NOT NULL,
   `Password` varchar(20) NOT NULL,
-  `ReportID` char(6) DEFAULT NULL,
-  `RoomID` char(6) DEFAULT NULL,
-  `VisitID` char(6) DEFAULT NULL
+  `ReportID` int DEFAULT NULL,
+  `RoomID` int DEFAULT NULL,
+  `VisitID` int DEFAULT NULL,
+  `SecurityQuestion` text default null,
+  `SecurityAnswer` text default null
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -110,11 +114,11 @@ INSERT INTO `patient` (`PatientID`, `Fname`, `Lname`, `Address`, `BloodType`, `S
 --
 
 CREATE TABLE `patientvisit` (
-  `VisitID` char(6) NOT NULL,
-  `PatientID` char(6) NOT NULL,
+  `VisitID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `PatientID` int NOT NULL,
   `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Date` date NOT NULL,
-  `EmpID` char(6) NOT NULL
+  `EmpID` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -124,11 +128,11 @@ CREATE TABLE `patientvisit` (
 --
 
 CREATE TABLE `report` (
-  `ReportID` char(6) NOT NULL,
-  `EmpID` char(6) NOT NULL,
+  `ReportID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `EmpID` int NOT NULL,
   `Description` varchar(40) NOT NULL,
-  `MedicineID` char(6) DEFAULT NULL,
-  `PatientID` char(6) NOT NULL
+  `MedicineID` int DEFAULT NULL,
+  `PatientID` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -138,12 +142,12 @@ CREATE TABLE `report` (
 --
 
 CREATE TABLE `room` (
-  `RoomID` char(6) NOT NULL,
+  `RoomID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `RoomNumber` int(5) NOT NULL,
   `BuildingNumber` int(5) NOT NULL,
   `FloorNumber` int(5) NOT NULL,
-  `EmpID` char(6) DEFAULT NULL,
-  `PatientID` char(6) DEFAULT NULL
+  `EmpID` int DEFAULT NULL,
+  `PatientID` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -162,19 +166,13 @@ INSERT INTO `room` (`RoomID`, `RoomNumber`, `BuildingNumber`, `FloorNumber`, `Em
 --
 
 CREATE TABLE `writes` (
-  `EmpID` char(6) NOT NULL,
-  `ReportID` char(6) NOT NULL
+  `EmpID` int NOT NULL,
+  `ReportID` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `employee`
---
-ALTER TABLE `employee`
-  ADD PRIMARY KEY (`EmpID`);
 
 --
 -- Indexes for table `governs`
@@ -187,14 +185,12 @@ ALTER TABLE `governs`
 -- Indexes for table `medicine`
 --
 ALTER TABLE `medicine`
-  ADD PRIMARY KEY (`MedicineID`),
   ADD KEY `ReportID` (`ReportID`);
 
 --
 -- Indexes for table `patient`
 --
 ALTER TABLE `patient`
-  ADD PRIMARY KEY (`PatientID`),
   ADD KEY `EmpID` (`EmpID`),
   ADD KEY `ReportID` (`ReportID`),
   ADD KEY `RoomID` (`RoomID`),
@@ -204,7 +200,6 @@ ALTER TABLE `patient`
 -- Indexes for table `patientvisit`
 --
 ALTER TABLE `patientvisit`
-  ADD PRIMARY KEY (`VisitID`),
   ADD KEY `PatientID` (`PatientID`),
   ADD KEY `EmpID` (`EmpID`);
 
@@ -212,7 +207,6 @@ ALTER TABLE `patientvisit`
 -- Indexes for table `report`
 --
 ALTER TABLE `report`
-  ADD PRIMARY KEY (`ReportID`),
   ADD KEY `EmpID` (`EmpID`),
   ADD KEY `MedicineID` (`MedicineID`),
   ADD KEY `PatientID` (`PatientID`);
@@ -221,7 +215,6 @@ ALTER TABLE `report`
 -- Indexes for table `room`
 --
 ALTER TABLE `room`
-  ADD PRIMARY KEY (`RoomID`),
   ADD KEY `EmpID` (`EmpID`),
   ADD KEY `PatientID` (`PatientID`);
 
@@ -291,3 +284,9 @@ ALTER TABLE `writes`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+

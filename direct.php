@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-$localhost = 'localhost';
-$dusername = 'root';
-$dpassword = 'root';
-$database = 'hospital';
+require 'common.php';
 $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -20,10 +17,10 @@ $P = $_POST['password'];
 
 //echo $N;
 //echo $P;
- 
-	  $quiry = "SELECT  * FROM employee WHERE EmpID = '$N' AND Password = '$P'";
 
-$result = mysqli_query($connection, $quiry);
+$query = "SELECT * FROM employee WHERE EmpID = " . mysql_real_escape_string($N) . " AND Password = '" . mysql_real_escape_string($P) . "'";
+
+$result = mysqli_query($connection, $query);
 if (!$result)
 {
 	echo "1";
@@ -56,6 +53,8 @@ if ($result->num_rows > 0) {
 			$_SESSION['Name'] = $Name;
 			header("location:admin.html");		
 			}
+
+		die("Invalid job title");
 			
 			
 		
@@ -82,9 +81,9 @@ if ($result->num_rows > 0) {
 	   
 	 
 	   
-	   	  $quiry1 = "SELECT  * FROM patient WHERE PatientID = '$N' AND Password = '$P'";
+$query1 = "SELECT * FROM patient WHERE PatientID = " . mysql_real_escape_string($N) . " AND Password = '" . mysql_real_escape_string($P) . "'";
 
-$result1 = mysqli_query($connection, $quiry1);
+$result1 = mysqli_query($connection, $query1);
 if (!$result1)
 {
 	echo "2";
