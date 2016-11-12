@@ -12,9 +12,7 @@ In-class assignment 10/20.
 git clone https://github.com/sjuDB/[your-repo-name].git
 ```
 
-3) Go into the directory and edit this file (use any text editor that you want). In the space below, put your name where it says [put your name here].
-
-
+3) Go into the directory and edit this file (use any text editor that you want). In the space below, put your name where it says [lelakos90]
 4) Get the status of the repository using the following command (or a GUI). it should tell you that there is an untracked file, or that there are 'changes not staged for commit'
 ```
 git status
