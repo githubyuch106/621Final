@@ -1,0 +1,26 @@
+@charset "UTF-8";
+.h2 {
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-size: x-large;
+}
+.body {
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 5%;
+	background-image: url(med4.jpg);
+	background-repeat: no-repeat;
+	text-align: left;
+}
+.container {
+	text-align: left;
+}
+.font {
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	text-align: left;
+	text-decoration: none;
+}
+.submit {
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-size: large;
+	text-align: left;
+}
