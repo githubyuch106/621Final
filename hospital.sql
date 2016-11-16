@@ -44,10 +44,10 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary`, `Password`, `JobTitle`, `SecurityQuestion`, `SecurityAnswer`) VALUES
-('111', '23435465', 'Mohammed', 'Alhazza', '2169398627', 5000, 'doctor1', 'Doctor', NULL, NULL),
+('111', '23435465', 'Mohammed', 'Alhazza', '2169398627', 5000, 'doctor1', 'Doctor', "What's your favorite color?", "pink"),
 ('222', '3454657', 'Ali', 'AL-Mohammad', '2677749290', 6000, 'doctor2', 'Doctor', "Where were you born?", "Mississippi"),
-('333', '23243546', 'Jena', 'Tom', '223545678', 6000, 'doctor3', 'Doctor', NULL, NULL),
-('444', '3456576', 'Nancy', 'Jon', '32452435', 3000, 'nurse4', 'nurse', NULL, NULL),
+('333', '23243546', 'Jena', 'Tom', '223545678', 6000, 'doctor3', 'Doctor', "What's your favorite color?", "turquoise"),
+('444', '3456576', 'Nancy', 'Jon', '32452435', 3000, 'nurse4', 'nurse', "What's your favorite color?", "lavender"),
 ('admin', '2345678', 'admin', 'admin', '999', 100000, 'admin', 'admin', 'What\'s your favorite color?', 'green');
 
 -- --------------------------------------------------------
@@ -102,10 +102,10 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`PatientID`, `Fname`, `Lname`, `Address`, `BloodType`, `Sex`, `Weight`, `Height`, `EmpID`, `Vitals`, `Password`, `ReportID`, `RoomID`, `VisitID`) VALUES
-('1111', 'Bob', 'Smith', '123 City Line Philadelphia PA 19131', 'A+', 'M', 180, 6, '111', 'Body temperature', 'patient1', NULL, '123', NULL),
-('2222', 'Ahmed', 'bader', '3234 w112 westminster PA 19246', 'O', 'M', 160, 5, '111', 'Pulse rate', 'patient2', NULL, '456', NULL),
-('3333', 'Sara', 'Anderson', '3244 34st philadelphia PA 19773', 'O+', 'F', 120, 6, '222', 'Pulse rate', 'patient3', NULL, '123', NULL);
+INSERT INTO `patient` (`PatientID`, `Fname`, `Lname`, `Address`, `BloodType`, `Sex`, `Weight`, `Height`, `EmpID`, `Vitals`, `Password`, `ReportID`, `RoomID`, `VisitID`, `SecurityQuestion`, `SecurityAnswer`) VALUES
+('1111', 'Bob', 'Smith', '123 City Line Philadelphia PA 19131', 'A+', 'M', 180, 6, '111', 'Body temperature', 'patient1', NULL, '123', NULL, "What's your favorite color?", "Orange"),
+('2222', 'Ahmed', 'bader', '3234 w112 westminster PA 19246', 'O', 'M', 160, 5, '111', 'Pulse rate', 'patient2', NULL, '456', NULL, "What's your favorite color?", "white"),
+('3333', 'Sara', 'Anderson', '3244 34st philadelphia PA 19773', 'O+', 'F', 120, 6, '222', 'Pulse rate', 'patient3', NULL, '123', NULL, "What's your favorite color?", "black");
 
 -- --------------------------------------------------------
 
