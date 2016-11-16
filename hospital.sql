@@ -48,7 +48,7 @@ INSERT INTO `employee` (`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary
 ('222', '3454657', 'Ali', 'AL-Mohammad', '2677749290', 6000, 'doctor2', 'Doctor', "Where were you born?", "Mississippi"),
 ('333', '23243546', 'Jena', 'Tom', '223545678', 6000, 'doctor3', 'Doctor', NULL, NULL),
 ('444', '3456576', 'Nancy', 'Jon', '32452435', 3000, 'nurse4', 'nurse', NULL, NULL),
-('admin', '2345678', 'admin', 'admin', '999', 100000, 'admin', 'admin', NULL, NULL);
+('admin', '2345678', 'admin', 'admin', '999', 100000, 'admin', 'admin', 'What\'s your favorite color?', 'green');
 
 -- --------------------------------------------------------
 

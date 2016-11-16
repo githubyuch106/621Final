@@ -5,7 +5,7 @@
 
 <h2>New Patient</h2>
 
-<form  method = "POST" action="addPatient.php">
+<form enctype='multipart/form-data' method = "POST" action="addPatient.php">
 
 
   <div class="container">
@@ -61,7 +61,13 @@
     <input type="Password" placeholder="Enter Password" name="Password" required>
         <br></br>
 		
+	<label><b>Security Question</b></label>
+    <input type="text" placeholder="Enter security question" name="SecurityQuestion" required>
+        <br></br>
 		
+	<label><b>Security Answer</b></label>
+    <input type="text" placeholder="Enter security answer" name="SecurityAnswer" required>
+        <br></br>
 
 	<label><b>Image</b></label>
     <input type="file" name="Image" required>
