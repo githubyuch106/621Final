@@ -17,6 +17,8 @@ $PhoneNumber = $_POST['PhoneNumber'];
 $Salary = $_POST['Salary'];
 $JobTitle = $_POST['JobTitle'];
 $Password = $_POST['Password'];
+$SecurityQuestion = $_POST['SecurityQuestion'];
+$SecurityAnswer = $_POST['SecurityAnswer'];
 /*
 echo $name;
 echo "<pre>";
@@ -26,8 +28,8 @@ echo "<pre>";
  
 	 // $quiry = "SELECT  position FROM login WHERE Name = '$Name' AND Password = '$Pass'";
 	      //  $quiry = "INSERT INTO `employee`(`id`, `Name`, `JobTitle`, `Password`) VALUES ('$ID','$Name','$JobTitle','$Password')" ;
-       $quiry = "INSERT INTO `employee`(`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary`, `Password`, `JobTitle`)";
-       $quiry.= "VALUES('$EmpID','$SSN','$Fname','$Lname','$PhoneNumber','$Salary','$Password','$JobTitle')";
+       $quiry = "INSERT INTO `employee`(`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary`, `Password`, `JobTitle`,`SecurityQuestion`,`SecurityAnswer`)";
+       $quiry.= "VALUES('$EmpID','$SSN','$Fname','$Lname','$PhoneNumber','$Salary','$Password','$JobTitle','$SecurityQuestion','$SecurityAnswer')";
 
 
 $result = mysqli_query($connection, $quiry);

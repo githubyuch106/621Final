@@ -18,53 +18,30 @@ $P = $_POST['password'];
 //echo $N;
 //echo $P;
 
-$query = "SELECT * FROM employee WHERE EmpID = " . mysql_real_escape_string($N) . " AND Password = '" . mysql_real_escape_string($P) . "'";
+@$query = "SELECT * FROM employee WHERE EmpID = " . mysql_real_escape_string($N) . " AND Password = '" . mysql_real_escape_string($P) . "'";
 
 $result = mysqli_query($connection, $query);
 if (!$result)
 {
 	echo "1";
-    die("Query Faile".  mysqli_errno($connection));   
+    die("Query Faile".  mysqli_errno($connection));
 }
 
 if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-         echo  $row['JobTitle']; //job title of who loged in 
-		 echo "<pre>";
-	     echo $row['Fname'];
-		echo "<pre>";
-		
+	// output data of each row
+	while ($row = $result->fetch_assoc()) {
 		if ($row['JobTitle'] == 'Doctor'){
-			$EmpID = $row['EmpID'];
-			echo $EmpID;
-			$_SESSION['aEmpID'] = $EmpID;
-			
-			header("location:doctor.php");
-			
+			$_SESSION['aEmpID'] = $row['EmpID'];
+			header("location: doctor.php");
+		} else if ($row['JobTitle'] == 'admin'){
+			$_SESSION['Name'] = $Name;
+			header("location: admin.html");
+		} else if ($row['JobTitle'] == 'nurse'){
+			die("Only admins, doctors, and patients can log in; not nurses.");
+		} else {
+			die("Invalid job title");
 		}
-		
-		if ($row['JobTitle'] == 'nurse'){
-			$_SESSION['Name'] = $Name;
-			header("location:nurse.php");	
-			}
-			
-		if ($row['JobTitle'] == 'admin'){
-			$_SESSION['Name'] = $Name;
-			header("location:admin.html");		
-			}
-
-		die("Invalid job title");
-			
-			
-		
-		//else{
-		//	header("location:patient.php");
-		//}
-		
-		
-		
-    }
+	}
 }
 /* else {
 	
