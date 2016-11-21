@@ -6,10 +6,7 @@ $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-//echo "Connected successfully";
-echo "<pre>";
 
-$EmpID = $_POST['EmpID'];
 $SSN = $_POST['SSN'];
 $Fname = $_POST['Fname'];
 $Lname = $_POST['Lname'];
@@ -19,17 +16,12 @@ $JobTitle = $_POST['JobTitle'];
 $Password = $_POST['Password'];
 $SecurityQuestion = $_POST['SecurityQuestion'];
 $SecurityAnswer = $_POST['SecurityAnswer'];
-/*
-echo $name;
-echo "<pre>";
-echo $pass;
-echo "<pre>";
-*/
+
+        $image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
+	$name = addslashes($_FILES['image']['name']);	
  
-	 // $quiry = "SELECT  position FROM login WHERE Name = '$Name' AND Password = '$Pass'";
-	      //  $quiry = "INSERT INTO `employee`(`id`, `Name`, `JobTitle`, `Password`) VALUES ('$ID','$Name','$JobTitle','$Password')" ;
-       $quiry = "INSERT INTO `employee`(`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary`, `Password`, `JobTitle`,`SecurityQuestion`,`SecurityAnswer`)";
-       $quiry.= "VALUES('$EmpID','$SSN','$Fname','$Lname','$PhoneNumber','$Salary','$Password','$JobTitle','$SecurityQuestion','$SecurityAnswer')";
+  $quiry = "INSERT INTO `employee`( `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary`, `Password`, `JobTitle`,`SecurityQuestion` , `SecurityAnswer`, `Email` , `image` , `name`)";
+ $quiry.=                 "VALUES('$SSN','$Fname','$Lname','$PhoneNumber','$Salary','$Password','$JobTitle' ,      NULL,                NULL,        '$Email' ,'$image' ,'$name')";
 
 
 $result = mysqli_query($connection, $quiry);
@@ -41,7 +33,7 @@ if (!$result)
 }
 
 else {
-	header( "location: admin.html" );
+		header( "location: AdminListEmployee.php" );
 }
 
 ?>
