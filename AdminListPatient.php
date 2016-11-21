@@ -4,6 +4,16 @@ session_start();
 //echo "Welcome to Doctor page";
 //echo $Name;
 
+?>
+<html>
+<body>
+<form action="admin.html">
+    <input type="submit" value="Main Page" />
+</form>
+</body>
+</html>
+<?php
+
 require 'common.php';
 $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
@@ -34,6 +44,7 @@ if ($result->num_rows > 0) {
 	
 	   echo "<tr>";
 	   echo "<td>PatientID</td>";
+	   echo "<td>Image</td>";
        echo "<td>First Name</td>";
 	   echo "<td>Last Name</td>";
 	   echo "<td>Address</td>";
@@ -53,10 +64,12 @@ if ($result->num_rows > 0) {
 	   $Weight =  $row['Weight'];
 	   $Height =  $row['Height'];
 	   $Vitals =  $row['Vitals'];
+	   $image = '<img src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'" height="100" width="100"/>';
 
 		
        echo "<tr>";
        echo "<td>$PatientID</td>";
+	   echo "<td>$image</td>";
        echo "<td>$Fname</td>";
 	   echo "<td>$Lname</td>";
 	   echo "<td>$Address</td>";
@@ -66,6 +79,7 @@ if ($result->num_rows > 0) {
 	   echo "<td>$Height</td>";
 	   echo "<td>$Vitals</td>";
 	   echo "<td colspan='2'>". "<a href = 'AdminEditPatient.php?Edit=$row[PatientID]'>Edit</a>".  "</td>";
+	   echo "<td colspan='2'>". "<a href = 'AdminDeletePatient.php?Delete=$row[PatientID]'>Delete</a>".  "</td>";
 	   //echo "<br>";
 	   echo "</tr>";
 		
@@ -78,11 +92,4 @@ if ($result->num_rows > 0) {
     //echo "0 results";
 	echo "</table>";
 }
-
-
-
-
-
-
-
 ?>
