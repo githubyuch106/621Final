@@ -6,16 +6,11 @@
 
 <h2>New Employee</h2>
 
-<form  method = "POST" action="addEmployee.php">
+<form  method = "POST" action="addEmployee.php" enctype="multipart/form-data">
 
 
   <div class="container">
   
-      <label><b>Employee ID</b></label>
-    <input type="text" placeholder="Enter ID" name="EmpID" required>
-<br></br>
-
-
     <label><b>SSN</b></label>
     <input type="text" placeholder="Enter SSN" name="SSN" required>
 <br></br>
@@ -45,6 +40,10 @@
     <input type="text" placeholder="Enter Job Title" name="JobTitle" required>
         <br></br>
 		
+
+		<label><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="Email" required>
+        <br></br>
 		
 			 <label><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="Password" required>
