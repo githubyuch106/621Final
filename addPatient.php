@@ -22,8 +22,8 @@ $SecurityAnswer = $_POST['SecurityAnswer'];
  $image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
  $name = addslashes($_FILES['image']['name']);
 
-       $quiry = "INSERT INTO `patient`(`Fname`, `Lname`, `Address`, `BloodType`,`Sex` , `Weight`, `Height`,`EmpID`, `Vitals`, `Password`,`ReportID`,`RoomID`,`VisitID`, `image` ,`name` ,`SecurityQuestion`,`SecurityAnswer`)";
-       $quiry.= "VALUES                ('$Fname','$Lname','$Address','$BloodType','$Sex' , '$Weight','$Height', NULL, '$Vitals','$Password',NULL,NULL,NULL , ,'$image' ,'$name' '$SecurityQuestion', '$SecurityAnswer')";
+         $quiry = "INSERT INTO `patient`(`Fname`, `Lname`, `Address`, `BloodType`,`Sex` , `Weight`, `Height`,`EmpID`, `Vitals`, `Password`,`ReportID`,`RoomID`,`VisitID`,`SecurityQuestion` , `SecurityAnswer`, `Email`, `image` ,`name`)";
+          $quiry.= "VALUES              ('$Fname','$Lname','$Address','$BloodType','$Sex' , '$Weight','$Height', NULL, '$Vitals','$Password',NULL,     NULL,      NULL,' ,      NULL,               NULL,       $Email','$image' ,'$name' )";
 
 
 $result = mysqli_query($connection, $quiry);
