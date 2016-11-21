@@ -14,7 +14,16 @@ if ($connection->connect_error) {
 echo "<pre>";
 
 $aEmpID = $_SESSION['aEmpID'];
-//echo $aEmpID;
+$FineEmpName = mysqli_query($connection,"SELECT Fname , Lname FROM employee WHERE EmpID = '$aEmpID'");
+ $row = mysqli_fetch_array($FineEmpName,MYSQLI_ASSOC);
+   
+ $EmpFname = $row['Fname'];
+ $EmpLname = $row['Lname'];
+   
+   echo "Welcome Dr. ";
+   echo $EmpFname;
+   echo " ";
+   echo $EmpLname;
 echo "<pre>";
  
 	 $quiry = "SELECT  PatientID , Fname , Lname , BloodType , Sex , Weight , Height , Vitals  from patient where EmpID = '$aEmpID'";
