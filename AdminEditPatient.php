@@ -16,11 +16,12 @@ $Fname=$_POST['Fname'];
 $Lname=$_POST['Lname'];
 $Address=$_POST['Address'];
 $BloodType=$_POST['BloodType'];
+$EmpID=$_POST['EmpID'];
 $Sex=$_POST['Sex'];
 $Weight=$_POST['Weight'];
 $Height=$_POST['Height'];
 $Vitals=$_POST['Vitals'];
-$query3=mysql_query("update patient set Fname = '$Fname', Lname = '$Lname', Address = '$Address', BloodType='$BloodType',  Sex = '$Sex', Weight='$Weight' , Height='$Height'  , Vitals='$Vitals'  where PatientID='$PatientID'");
+$query3=mysql_query("update patient set Fname = '$Fname', Lname = '$Lname', Address = '$Address', BloodType='$BloodType',  Sex = '$Sex', Weight='$Weight' , Height='$Height' , EmpID  = '$EmpID' , Vitals='$Vitals'  where PatientID='$PatientID'");
 
 if($query3)
 {
@@ -35,6 +36,7 @@ First Name:<input type="text" name="Fname" value="<?php echo $query2['Fname']; ?
 Last Name:<input type="text" name="Lname" value="<?php echo $query2['Lname']; ?>" /><br /><br />
 Address:<input type="text" name="Address" value="<?php echo $query2['Address']; ?>" /><br /><br />
 Blood Type:<input type="text" name="BloodType" value="<?php echo $query2['BloodType']; ?>" /><br /><br />
+Employee ID:<input type="text" name="EmpID" value="<?php echo $query2['EmpID']; ?>" /><br /><br />
 Sex:<input type="text" name="Sex" value="<?php echo $query2['Sex']; ?>" /><br /><br />
 Weight:<input type="text" name="Weight" value="<?php echo $query2['Weight']; ?>" /><br /><br />
 Height:<input type="text" name="Height" value="<?php echo $query2['Height']; ?>" /><br /><br />
