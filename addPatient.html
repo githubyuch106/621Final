@@ -5,16 +5,11 @@
 
 <h2>New Patient</h2>
 
-<form enctype='multipart/form-data' method = "POST" action="addPatient.php">
+<form  method = "POST" action="addPatient.php" enctype="multipart/form-data">
 
 
   <div class="container">
   
-      <label><b>Patient ID</b></label>
-    <input type="text" placeholder="Enter ID" name="patientID" required>
-<br></br>
-
-
     <label><b>First Name</b></label>
     <input type="text" placeholder="Enter First Name" name="Fname" required>
         <br></br>
@@ -55,6 +50,9 @@
     <input type="text" placeholder="Enter Vitals" name="Vitals" required>
         <br></br>
 		
+	<label><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="Email" required>
+        <br></br>
 		
 		
 	<label><b>Password</b></label>
@@ -70,7 +68,7 @@
         <br></br>
 
 	<label><b>Image</b></label>
-    <input type="file" name="Image" required>
+    <input type="file" name="image" required>
         <br></br>
 		
 		
