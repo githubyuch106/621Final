@@ -3,7 +3,23 @@ session_start();
 //$Name = $_SESSION['aEmpID'];
 //echo "Welcome to Doctor page";
 //echo $Name;
+?>
+<html>
+<style><link rel="stylesheet" type="text/css" href="style1.css">
+</style>
+<body>
+<div class="wrapper">
+    
 
+<form action="admin.html" >
+   <!-- <input type="submit" value="Main Page" />-->
+   <button class="button">Main Page</button>
+</form>
+</div>
+</body>
+</html>
+<?php
+echo '<link href="style1.css" rel="stylesheet">';
 require 'common.php';
 $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
@@ -21,7 +37,7 @@ echo "<pre>";
 
 	 $result = mysqli_query($connection, $quiry);
 //echo $result;
-echo "<pre>";
+//echo "<pre>";
 if (!$result)
 {
 	
@@ -30,18 +46,24 @@ if (!$result)
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo "<table align='left' width='20%' height='20%'>";
+	echo "<table class='zui-table zui-table-zebra zui-table-horizontal' align= 'center'>";
 	
+	  echo "<thead>";
 	   echo "<tr>";
-	   echo "<td>EmpID</td>";
-	   echo "<td>SSN</td>";
-       echo "<td>First Name</td>";
-	   echo "<td>Last Name</td>";
-	   echo "<td>Phone Number</td>";
-	   echo "<td>Salary</td>";
-	   echo "<td>Job Title</td>";
-
-		echo "</tr>";
+	   echo "<th>EmpID</th>";
+	   echo "<th>Image</th>";
+	   echo "<th>SSN</th>";
+       echo "<th>First Name</th>";
+	   echo "<th>Last Name</th>";
+	   echo "<th>Phone Number</th>";
+	   echo "<th>Salary</th>";
+	   echo "<th>Job Title</th>";
+	   echo "<th>Edit</th>";
+	   echo "<th>Delete</th>";
+   echo"</tr>";
+        echo"</thead>";
+		
+		//echo "</th>";
     while($row = $result->fetch_assoc()) {
 	   $EmpID = $row['EmpID'];
 	   $SSN = $row['SSN'];
@@ -50,11 +72,12 @@ if ($result->num_rows > 0) {
 	   $PhoneNumber =  $row['PhoneNumber'];
 	   $Salary =  $row['Salary'];
 	   $JobTitle =  $row['JobTitle'];
+	   $image = '<img src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'" height="100" width="100"/>';
 		
-		
-		
+		echo "<tbody>";
        echo "<tr>";
-       echo "<td>$EmpID</td>";
+		echo "<td>$EmpID</td>"; 
+       echo "<td><b>$image</td>";
 	    echo "<td>$SSN</td>";
        echo "<td>$Fname</td>";
 	   echo "<td>$Lname</td>";
@@ -62,9 +85,11 @@ if ($result->num_rows > 0) {
 	   echo "<td>$Salary</td>";
 	   echo "<td>$JobTitle</td>";
 	   echo "<td colspan='2'>". "<a href = 'AdminEditEmployee.php?Edit=$row[EmpID]'>Edit</a>".  "</td>";
+	   echo "<td colspan='2'>". "<a href = 'AdminDeleteEmployee.php?Delete=$row[EmpID]'>Delete</a>".  "</td>";
 	  
 	   //echo "<br>";
 	   echo "</tr>";
+	   echo "</tbody>";
 		
     }
 } else {
@@ -75,11 +100,4 @@ if ($result->num_rows > 0) {
     //echo "0 results";
 	echo "</table>";
 }
-
-
-
-
-
-
-
 ?>
