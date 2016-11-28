@@ -18,6 +18,7 @@ $Vitals = $_POST['Vitals'];
 $Password = $_POST['Password'];
 $SecurityQuestion = $_POST['SecurityQuestion'];
 $SecurityAnswer = $_POST['SecurityAnswer'];
+$Email = $_POST['Email'];
 
  $image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
  $name = addslashes($_FILES['image']['name']);
