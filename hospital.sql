@@ -113,14 +113,16 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
+INSERT INTO patient (PatientID, Fname, Lname, Address, BloodType, Sex, Weight, Height, EmpID, Vitals, Password, ReportID, RoomID, VisitID, SecurityQuestion, SecurityAnswer, Email, image, name) VALUES
+(3149, 'Jane', 'Jane', '123 Example St', 'A', 'F', 100, 60, Null, 'healthy', 'jane', NULL, NULL, NULL, 'What is your favorite color?', 'blue', 'jane@gmail.com', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patientvisit`
+-- Table structure for table `appointment`
 --
 
-CREATE TABLE `patientvisit` (
+CREATE TABLE `appointment` (
   `VisitID` int(11) NOT NULL,
   `PatientID` int(11) NOT NULL,
   `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -214,9 +216,9 @@ ALTER TABLE `patient`
   ADD KEY `VisitID` (`VisitID`);
 
 --
--- Indexes for table `patientvisit`
+-- Indexes for table `appointment`
 --
-ALTER TABLE `patientvisit`
+ALTER TABLE `appointment`
   ADD PRIMARY KEY (`VisitID`),
   ADD KEY `PatientID` (`PatientID`),
   ADD KEY `EmpID` (`EmpID`);
@@ -265,9 +267,9 @@ ALTER TABLE `medicine`
 ALTER TABLE `patient`
   MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3347;
 --
--- AUTO_INCREMENT for table `patientvisit`
+-- AUTO_INCREMENT for table `appointment`
 --
-ALTER TABLE `patientvisit`
+ALTER TABLE `appointment`
   MODIFY `VisitID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `report`
@@ -304,14 +306,14 @@ ALTER TABLE `patient`
   ADD CONSTRAINT `patient_ibfk_2` FOREIGN KEY (`EmpID`) REFERENCES `employee` (`EmpID`),
   ADD CONSTRAINT `patient_ibfk_3` FOREIGN KEY (`ReportID`) REFERENCES `report` (`ReportID`),
   ADD CONSTRAINT `patient_ibfk_4` FOREIGN KEY (`RoomID`) REFERENCES `room` (`RoomID`),
-  ADD CONSTRAINT `patient_ibfk_5` FOREIGN KEY (`VisitID`) REFERENCES `patientvisit` (`VisitID`);
+  ADD CONSTRAINT `patient_ibfk_5` FOREIGN KEY (`VisitID`) REFERENCES `appointment` (`VisitID`);
 
 --
--- Constraints for table `patientvisit`
+-- Constraints for table `appointment`
 --
-ALTER TABLE `patientvisit`
-  ADD CONSTRAINT `patientvisit_ibfk_1` FOREIGN KEY (`PatientID`) REFERENCES `patient` (`PatientID`),
-  ADD CONSTRAINT `patientvisit_ibfk_2` FOREIGN KEY (`EmpID`) REFERENCES `employee` (`EmpID`);
+ALTER TABLE `appointment`
+  ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`PatientID`) REFERENCES `patient` (`PatientID`),
+  ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`EmpID`) REFERENCES `employee` (`EmpID`);
 
 --
 -- Constraints for table `report`

@@ -49,13 +49,15 @@ if ($result->num_rows > 0) {
     }
 }
 
- $query1 = "SELECT  * FROM patient WHERE Email = '$N' AND Password = '$P'";
+$query1 = "SELECT  * FROM patient WHERE Email = '$N' AND Password = '$P'";
+var_dump($query1);
 $result1 = mysqli_query($connection, $query1);
 if (!$result1)
 {
 	echo "2";
     die("Query Faile".  mysqli_errno($connection));   
 }
+var_dump($result1);
 
 if ($result1->num_rows > 0) {
 	  while($row = $result1->fetch_assoc()) {
@@ -68,9 +70,7 @@ if ($result1->num_rows > 0) {
 		echo '<script language="javascript">';
 		echo 'alert("You need to sign up with us")';
 		echo '</script>';
-		header( "refresh:1;url=index.html" );
-	  
-
+		//header( "refresh:1;url=index.html" );
 }
 
 ?>
