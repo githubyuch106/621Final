@@ -9,14 +9,10 @@ if ($connection->connect_error) {
 //echo "Connected successfully";
 echo "<pre>";
 
-//$RoomID = $_POST['RoomID'];
-$RoomNumber = $_POST['RoomNumber'];
-$BuildingNumber = $_POST['BuildingNumber'];
-$FloorNumber = $_POST['FloorNumber'];
+$JobTitle = $_POST['JobTitle'];
 
-
-       $quiry = "INSERT INTO `room`(`RoomNumber`, `BuildingNumber`, `FloorNumber`,`EmpID`, `PatientID`  )";
-       $quiry.= "VALUES                ('$RoomNumber','$BuildingNumber','$FloorNumber',NULL,NULL)";
+       $quiry = "INSERT INTO `jobtitle`(`Position`)";
+       $quiry.= "VALUES                ('$JobTitle')";
 
 
 $result = mysqli_query($connection, $quiry);
@@ -28,7 +24,7 @@ if (!$result)
 }
 
 else {
-	header( "location: AdminListRoom.php" );
+	header( "location: AdminListJobTitle.php" );
 }
 
 ?>

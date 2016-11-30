@@ -10,6 +10,7 @@
 
   <div class="container">
   
+
     <label><b>First Name</b></label>
     <input type="text" placeholder="Enter First Name" name="Fname" required>
         <br></br>
@@ -31,7 +32,11 @@
 
 		
     <label><b>Sex</b></label>
-    <input type="text" placeholder="Sex" name="Sex" required>
+    <select name="Sex" id="Sex">
+            <option value="">Select One</option>
+            <option value = "M">Male</option>
+            <option value = "F">Female</option>
+    </select>
         <br></br>
 		
 		
@@ -49,23 +54,24 @@
 	<label><b>Vitals</b></label>
     <input type="text" placeholder="Enter Vitals" name="Vitals" required>
         <br></br>
-		
+				
 	<label><b>Email</b></label>
     <input type="email" placeholder="Enter Email" name="Email" required>
         <br></br>
 		
-		
-	<label><b>Password</b></label>
-    <input type="Password" placeholder="Enter Password" name="Password" required>
-        <br></br>
-		
-	<label><b>Security Question</b></label>
+		<label><b>Security Question</b></label>
     <input type="text" placeholder="Enter security question" name="SecurityQuestion" required>
         <br></br>
 		
 	<label><b>Security Answer</b></label>
     <input type="text" placeholder="Enter security answer" name="SecurityAnswer" required>
         <br></br>
+		
+	<label><b>Password</b></label>
+    <input type="Password" placeholder="Enter Password" name="Password" required>
+        <br></br>
+		
+		
 
 	<label><b>Image</b></label>
     <input type="file" name="image" required>
@@ -82,8 +88,6 @@
 </form>
 
 
- 
-</form>
 
 
 </body>

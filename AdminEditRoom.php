@@ -8,11 +8,11 @@ mysql_select_db("hospital",$query);
 if(isset($_GET['Edit']))
 {
 $RoomID=$_GET['Edit'];
-echo $RoomID;
+//echo $RoomID;
 $_SESSION['RoomID'] = $RoomID;
 if(isset($_POST['submit']))
 {
-$RoomID=$_POST['RoomID'];
+//$RoomID=$_POST['RoomID'];
 $RoomNumber=$_POST['RoomNumber'];
 $BuildingNumber=$_POST['BuildingNumber'];
 $FloorNumber=$_POST['FloorNumber'];

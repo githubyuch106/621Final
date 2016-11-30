@@ -14,7 +14,7 @@ $_SESSION['PatientID'] = $PatientID;
 <form  method = "POST" action="DoctorAddReport.php">
   <div class="container">
       <label><b>Report</b></label>
-    <input type="text" placeholder="Write Description" name="Description" style = "width: 400px" required>
+    <textarea name="Description" style = "width: 400px" required> </textarea>
         <br></br>
     <button type="submit">Save</button>
 	<br></br>

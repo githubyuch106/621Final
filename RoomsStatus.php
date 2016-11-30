@@ -3,16 +3,7 @@ session_start();
 //$Name = $_SESSION['aEmpID'];
 //echo "Welcome to Doctor page";
 //echo $Name;
-?>
-
-<html>
-<body>
-<form action="admin.php">
-    <input type="submit" value="Main Page" />
-</form>
-</body>
-</html>
-<?php
+echo "Room Status";
 require 'common.php';
 $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
@@ -26,7 +17,7 @@ echo "<pre>";
 //echo $aEmpID;
 echo "<pre>";
  
-	 $quiry = "SELECT * from room";
+	 $quiry = "SELECT * from roomstatus";
 
 	 $result = mysqli_query($connection, $quiry);
 //echo $result;
@@ -42,26 +33,23 @@ if ($result->num_rows > 0) {
 	echo "<table align='left' width='20%' height='20%'>";
 	
 	   echo "<tr>";
-	   echo "<td>RoomId</td>";
-	   echo "<td>Room Number</td>";
-       echo "<td>Building Number</td>";
-	   echo "<td>Floor Number</td>";
+	   echo "<td>Bulilding-Floor-Room</td>";
+	   echo "<td>Doctor Name</td>";
+
+	   
 
 		echo "</tr>";
     while($row = $result->fetch_assoc()) {
-	   $RoomID = $row['RoomID'];
-	   $RoomNumber = $row['RoomNumber'];
-       $BuildingNumber =  $row['BuildingNumber'];
-	   $FloorNumber =  $row['FloorNumber'];	
+	   $Location = $row['Location'];
+	   $Doctor = $row['Doctor'];
+
 		
 		
        echo "<tr>";
-       echo "<td>$RoomID</td>";
-	    echo "<td>$RoomNumber</td>";
-       echo "<td>$BuildingNumber</td>";
-	   echo "<td>$FloorNumber</td>";
-	   echo "<td colspan='2'>". "<a href = 'AdminEditRoom.php?Edit=$row[RoomID]'>Edit</a>".  "</td>";
-	   echo "<td colspan='2'>". "<a href = 'AdminDeleteRoom.php?Delete=$row[RoomID]'>Delete</a>".  "</td>";
+       echo "<td>$Location</td>";
+	    echo "<td>$Doctor</td>";
+
+
 	  
 	   //echo "<br>";
 	   echo "</tr>";

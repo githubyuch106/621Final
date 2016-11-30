@@ -7,7 +7,7 @@ session_start();
 ?>
 <html>
 <body>
-<form action="admin.html">
+<form action="admin.php">
     <input type="submit" value="Main Page" />
 </form>
 </body>
@@ -92,4 +92,11 @@ if ($result->num_rows > 0) {
     //echo "0 results";
 	echo "</table>";
 }
+
+
+
+
+
+
+
 ?>
