@@ -1,33 +1,22 @@
-<?php 
-$ReportID=$_GET['Medicine'];
-//echo $PatientID; 
-$_SESSION['ReportID'] = $ReportID;
-//echo $PatientID;
+<?php
+session_start();
 ?>
-<!DOCTYPE html>
 <html>
 <body>
-<h2>New Medicine</h2>
-<form  method = "POST" action="DoctorAddMedicine.php">
-  <div class="container">
-      <label><b>Report</b></label>
-    <textarea type="text" placeholder="Write Medicine" name="Treatment" style = "width: 400px" required> </textarea>
-        <br></br>
-    <button type="submit">Save</button>
-	<br></br>
-  </div>
+<form action="patient.php">
+    <input type="submit" value="Back" />
 </form>
 
 </body>
 </html>
-
 <?php
-session_start();
 require 'common.php';
 $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
+
+$ReportID=$_GET['ReportID'];
 $_SESSION['ReportID'] = $ReportID;
 	 $quiry = "SELECT  * from medicine where ReportID = '$ReportID'";
 
@@ -50,8 +39,7 @@ if ($result->num_rows > 0) {
 	   $Treatment = $row['Treatment'];
        echo "<tr>";
        echo "<td>$Treatment</td>";
-	   echo "<td colspan='2'>". "<a href = 'DoctorEditMedicine.php?Edit=$row[MedicineID]'>Edit </a>".  "</td>";
-	    echo "<td colspan='2'>". "<a href = 'DoctorDeleteMedicine.php?Delete=$row[MedicineID]'>Delete</a>".  "</td>";
+	
 	   //echo "<br>";
 	   echo "</tr>";
 		
@@ -66,4 +54,3 @@ if ($result->num_rows > 0) {
 }
 
 ?>
-

@@ -8,7 +8,7 @@ mysql_select_db("hospital",$query);
 if(isset($_GET['Edit']))
 {
 $ReportID=$_GET['Edit'];
-echo $ReportID;
+//echo $ReportID;
 $_SESSION['ReportID'] = $ReportID;
 if(isset($_POST['submit']))
 {

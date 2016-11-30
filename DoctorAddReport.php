@@ -21,8 +21,8 @@ $findEmpID = mysqli_query($connection,"SELECT EmpID FROM patient WHERE PatientID
 $Description = $_POST['Description'];
 echo $Description; echo "<pre>";
 
-     $query = "INSERT INTO `report`(`EmpID`,     `Description`,  `MedicineID`,`PatientID`)";
-     $query.= "VALUES                ('$user','$Description' , NULL ,      $PatientID)";
+  $query = "INSERT INTO `report`(`EmpID`,       `Description`,  `MedicineID`,`PatientID`)";
+     $query.= "VALUES              ('$user',    '$Description' ,    NULL ,     $PatientID)";
 
 		 $result = mysqli_query($connection, $query);
 

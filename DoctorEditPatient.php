@@ -3,12 +3,24 @@
 <?php
 //include('config.php');
 session_start();
+require 'common.php';
+$connection = new mysqli($localhost , $dusername , $dpassword,$database);
+if ($connection->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 $query=mysql_connect("localhost","root","root");
 mysql_select_db("hospital",$query);
 if(isset($_GET['Edit']))
 {
 $PatientID=$_GET['Edit'];
-echo $PatientID;
+//echo $PatientID;
+
+$FinedPatientName = mysqli_query($connection,"SELECT * FROM patient WHERE PatientID = '$PatientID'");
+ $row = mysqli_fetch_array($FinedPatientName,MYSQLI_ASSOC);
+   
+ $PatientFname = $row['Fname'];
+ $PatientLname = $row['Lname'];
+
 $_SESSION['PatientID'] = $PatientID;
 if(isset($_POST['submit']))
 {

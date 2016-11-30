@@ -1,9 +1,12 @@
+<?php ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Welcome</title>
-<link href="styles.css" rel="stylesheet" type="text/css" /><!--[if IE 5]>
+<title>Hospital</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="drop.css" rel="stylesheet" type="text/css" />
+<!--[if IE 5]>
 <style type="text/css"> 
 /* place css box model fixes for IE 5* in this conditional comment */
 #sidebar1 { width: 230px; }
@@ -32,13 +35,65 @@
             </div>
       	</div>
         <div class="mainMenu">
-        	<ul>
-            	<li id="active"><a href="">Ams</a></li>
-                <li><a href="">Technology</a></li>
-                <li><a href="">Locations</a></li>
-                <li><a href="">Treaments</a></li>
-                <li><a href="">About us</a></li>
-            </ul>
+        <ul class="menuTemplate1 decor1_1" license="mylicense">
+    <li class="separator"></li>
+    <li><a href="#Horizontal-Menus" class="arrow">Employee</a>
+        <div class="drop decor1_2" style="width: 150px;">
+            <div class='left'>
+                <div>
+                    <a href="AdminListEmployee.php">List Employees</a><br />
+                    <a href="addEmployeeForm.php">Add Employee</a><br />
+                </div>
+            </div>
+			
+			
+			
+			
+			    <li><a href="#Horizontal-Menus" class="arrow">Patient</a>
+        <div class="drop decor1_2" style="width: 150px;">
+            <div class='left'>
+                <div>
+                    <a href="AdminListPatient.php">List Patients</a><br />
+                    <a href="addPatient.html">Add Patient</a><br />
+                </div>
+            </div>
+			
+			
+			
+			
+				    <li><a href="#Horizontal-Menus" class="arrow">Room</a>
+        <div class="drop decor1_2" style="width: 150px;">
+            <div class='left'>
+                <div>
+                    <a href="AdminListRoom.php">List Rooms</a><br />
+                    <a href="addRoomForm.php">Add Room</a><br />
+					<a href="OccupiedRoom.php">Room Occupied</a><br />
+					<a href="RoomsStatus.php">Room Status</a><br />
+                </div>
+            </div>
+			
+			
+			
+			
+						    <li><a href="#Horizontal-Menus" class="arrow">Job Title</a>
+        <div class="drop decor1_2" style="width: 150px;">
+            <div class='left'>
+                <div>
+                    <a href="AdminListJobTitle.php">List Job Title</a><br />
+					<a href="AdminAddJobTitleForm.php">Add Job Title </a><br />
+                </div>
+            </div>
+			
+			
+			
+			
+		<li><a href="logout.php" class="arrow">Logout</a>
+    
+			
+			 
+            
+ 
+</ul>
         </div>
         <div class="headerPic">
         	<div class="pics">
@@ -58,21 +113,7 @@
 	<form  method = "POST" action="direct.php">
     <div class="allContent">
         <!-- begin #sidebar1 -->
-        <div id="sidebar1">
-            <div class="loginTitle"><div class="lT">Login place</div></div>
-            <div class="loginBody">
-           	  <br />
-            	Login:<br />
-                    <input type="text" placeholder="Enter Email" name="email" required><br /><br />
-                Password:<br />
-                <input type="password" placeholder="Enter Password" name="password" required><br /><br />
-				  <input type="submit" value= "Submit"></input><br /><br />
-                <div class="fr"><a href="">Forgot password?</a><br /><a href="patientAddSelf.html">Register!</a><br /><br /></div>
-                <div class="ls"></div>
-				 
-            </div>
-            <div class="loginFooter"></div>
-        </div>
+
         <!-- end #sidebar1 -->
         <!-- begin #mainContent -->
         <div id="mainContent">

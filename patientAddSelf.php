@@ -22,7 +22,7 @@ $Password = $_POST['Password'];
 	$name = addslashes($_FILES['image']['name']);
 
          $quiry = "INSERT INTO `patient`(`Fname`, `Lname`, `Address`, `BloodType`,`Sex` , `Weight`, `Height`,`EmpID`, `Vitals`, `Password`,`ReportID`,`RoomID`,`VisitID`, `Email`, `image` ,`name`)";
-          $quiry.= "VALUES              ('$Fname','$Lname','$Address','$BloodType','$Sex' , '$Weight','$Height', NULL, '$Vitals','$Password',NULL,     NULL,      NULL,'   $Email','$image' ,'$name' )";
+          $quiry.= "VALUES              ('$Fname','$Lname','$Address','$BloodType','$Sex' , '$Weight','$Height', NULL, '$Vitals','$Password',NULL,     NULL,      NULL,  '$Email','$image' ,'$name' )";
 
 $result = mysqli_query($connection, $quiry);
 

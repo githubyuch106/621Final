@@ -1,3 +1,8 @@
 <?php
-session_destroy();
-header('Location: index.html');
+
+    session_start();
+  session_destroy();
+unset($_SESSION);
+header("Location: index.html"); 
+
+?>
