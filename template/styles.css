@@ -29,12 +29,13 @@ a:hover {
 
 }
 .headerTop {
+	font-size: medium;
 }
 .logo {
-	float:left;
-	color:#00b0e4;
-	font-size:48px;
-	padding:10px 0 0 20px;
+	float: left;
+	color: #00b0e4;
+	font-size: 24px;
+	padding: 10px 0 0 20px;
 }
 .logo span {
 	font-size:18px;
@@ -172,9 +173,14 @@ input {
 	height:21px;
 	width:269px;
 }
-#mainContent { 
+#mainContent {
 	margin: 0 0 0 269px;
-	padding:0 30px;
+	padding-top: 0%;
+	padding-left: 30px;
+	padding-bottom: 0;
+	padding-right: 30px;
+	float: none;
+	clear: none;
 } 
 #footer {
 	height:85px;
