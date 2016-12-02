@@ -10,6 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+BEGIN;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -94,6 +95,22 @@ INSERT INTO `employee` (`EmpID`, `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary
 (1047, '165008248', 'Quynn', 'Graham', '(025) 2467', 9079, '229', '', NULL, NULL, 'magna.Duis@Aenean.ed', '', ''),
 (1048, '164701163', 'Griffith', 'Phoebe', '0859 956 5', 11549, '472', '', NULL, NULL, 'Curabitur.egestas.nu', '', ''),
 (1049, '169108216', 'Shelly', 'Uriel', '070 5526 7', 12578, '950', '', NULL, NULL, 'fames.ac@massa.com', '', '');
+
+CREATE TABLE `appointment` (
+  `VisitID` int(11) NOT NULL,
+  `PatientID` int(11) NOT NULL,
+  `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Date` date NOT NULL,
+  `EmpID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`VisitID`),
+  ADD KEY `PatientID` (`PatientID`),
+  ADD KEY `EmpID` (`EmpID`);
 
 -- --------------------------------------------------------
 
@@ -538,6 +555,14 @@ ALTER TABLE `room`
 ALTER TABLE `writes`
   ADD CONSTRAINT `writes_ibfk_1` FOREIGN KEY (`EmpID`) REFERENCES `employee` (`EmpID`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `writes_ibfk_2` FOREIGN KEY (`ReportID`) REFERENCES `report` (`ReportID`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  
+ALTER TABLE `appointment`
+  MODIFY `VisitID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `appointment`
+  ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`PatientID`) REFERENCES `patient` (`PatientID`),
+  ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`EmpID`) REFERENCES `employee` (`EmpID`);
+
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
