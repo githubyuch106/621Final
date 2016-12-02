@@ -71,4 +71,3 @@ if ($result1->num_rows > 0) {
 
 }
 
-?>

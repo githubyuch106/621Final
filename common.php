@@ -2,7 +2,7 @@
 
 $localhost = 'localhost';
 $dusername = 'root';
-$dpassword = 'root';
+$dpassword = '';
 $database = 'hospital';
 $connection = new mysqli($localhost, $dusername, $dpassword, $database);
 if ($connection->connect_error) {
