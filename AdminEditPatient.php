@@ -64,44 +64,39 @@ $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 } ?>
-            <label><b>Doctor</b></label>
-            <select name = "EmpID" id="EmpID">
-                <option>Name</option>
-                <?php
-                if($stmt=$connection->query("select EmpID  from doctor"))
-                {
-                    while($r=$stmt->fetch_array(MYSQLI_ASSOC))
-                    {
-                 ?>      
-                <option name = "EmpID" value="<?php echo $r['EmpID'] ?>"><?php echo $r['EmpID'] ?></option> 
-                
-                <?php  }  }   ?>
-                
-            </select>
+
+<?php
+
+//this code of show names of Doctor instead  of  EmpID and Room Number instead  of RoomID is adopted from Lefty code a groupe member in our project team  
+$q = $connection->prepare('SELECT EmpID, Lname FROM employee WHERE JobTitle = "Doctor"');
+$q->execute();
+$q->bind_result($id, $lname);
+?>  
+           <p><label>Doctor: <select name="EmpID">
+<?php while ($q->fetch()): ?>
+<option value="<?= $id ?>">Dr. <?= $lname ?></option>
+<?php endwhile ?>
+</select></p>
 	
-		<br></br>
+	
 		<?php
+
 require 'common.php';
 $connection = new mysqli($localhost , $dusername , $dpassword,$database);
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 } ?>
-            <label><b>Room</b></label>
-            <select name = "RoomID" id="RoomID">
-                <option>Location</option>
-                <?php
-                if($stmt=$connection->query("select RoomID  from room where EmpID IS null"))
-                {
-                    while($r=$stmt->fetch_array(MYSQLI_ASSOC))
-                    {
-                 ?>      
-                <option name = "RoomID" value="<?php echo $r['RoomID'] ?>"><?php echo $r['RoomID'] ?></option> 
-                
-                <?php  }  }   ?>
-                
-            </select>
-			
-			<br></br>
+
+<?php
+$q = $connection->prepare('SELECT RoomID, BuildingNumber, RoomNumber FROM room WHERE PatientID is null');
+$q->execute();
+$q->bind_result($id, $BuildingNumber, $RoomNumber);
+?>  
+           <p><label>Room: <select name="RoomID">
+<?php while ($q->fetch()): ?>
+<option value="<?= $id ?>"><?= $BuildingNumber ?> <?= $RoomNumber ?></option>
+<?php endwhile ?>
+</select></p>
 Sex:<input type="text" name="Sex" value="<?php echo $query2['Sex']; ?>" /><br /><br />
 Weight:<input type="text" name="Weight" value="<?php echo $query2['Weight']; ?>" /><br /><br />
 Height:<input type="text" name="Height" value="<?php echo $query2['Height']; ?>" /><br /><br />

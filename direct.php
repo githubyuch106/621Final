@@ -66,8 +66,9 @@ if ($result1->num_rows > 0) {
 		echo '<script language="javascript">';
 		echo 'alert("You need to sign up with us")';
 		echo '</script>';
-		header( "refresh:1;url=index.html" );
+		header( "refresh:1;url=newindex.html" );
 	  
 
 }
 
+?>

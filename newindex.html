@@ -1,12 +1,9 @@
-<?php ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Hospital</title>
-<link href="styles.css" rel="stylesheet" type="text/css" />
-<link href="drop.css" rel="stylesheet" type="text/css" />
-<!--[if IE 5]>
+<title>free css template 167</title>
+<link href="styles.css" rel="stylesheet" type="text/css" /><!--[if IE 5]>
 <style type="text/css"> 
 /* place css box model fixes for IE 5* in this conditional comment */
 #sidebar1 { width: 230px; }
@@ -27,93 +24,54 @@
     <div id="header">
 		<div class="headerTop">
         	<div class="logo">
-            	<a href=""><img src="images/Saint_Joseph's_University_seal.png" alt="" width="80" height="80" /></a>Team 8 <span>Hospital Management System</span>
+            	<a href=""><img src ="images/Saint_Joseph's_University_seal.png" alt="" width="80" height="80" /></a>    Team 8 <span>Hospital Database Management</span>
             </div>
             <div class="search">
-            Admin Portal
-             </div>
+                Search:<br />
+                <div class="si"><input name="" type="text" /></div><div><a href=""><img src="images/searchButton.jpg" alt="" width="66" height="26" /></a></div>
             </div>
       	</div>
         <div class="mainMenu">
-        <ul class="menuTemplate1 decor1_1" license="mylicense">
-    <li class="separator"></li>
-    <li><a href="#Horizontal-Menus" class="arrow">Employee</a>
-        <div class="drop decor1_2" style="width: 150px;">
-            <div class='left'>
-                <div>
-                    <a href="AdminListEmployee.php">List Employees</a><br />
-                    <a href="addEmployeeForm.php">Add Employee</a><br />
-                </div>
-            </div>
-			
-			
-			
-			
-			    <li><a href="#Horizontal-Menus" class="arrow">Patient</a>
-        <div class="drop decor1_2" style="width: 150px;">
-            <div class='left'>
-                <div>
-                    <a href="AdminListPatient.php">List Patients</a><br />
-                    <a href="addPatient.html">Add Patient</a><br />
-                </div>
-            </div>
-			
-			
-			
-			
-				    <li><a href="#Horizontal-Menus" class="arrow">Room</a>
-        <div class="drop decor1_2" style="width: 150px;">
-            <div class='left'>
-                <div>
-                    <a href="AdminListRoom.php">List Rooms</a><br />
-                    <a href="addRoomForm.php">Add Room</a><br />
-					<a href="OccupiedRoom.php">Room Occupied</a><br />
-					<a href="RoomsStatus.php">Room Status</a><br />
-                </div>
-            </div>
-			
-			
-			
-			
-						    <li><a href="#Horizontal-Menus" class="arrow">Job Title</a>
-        <div class="drop decor1_2" style="width: 150px;">
-            <div class='left'>
-                <div>
-                    <a href="AdminListJobTitle.php">List Job Title</a><br />
-					<a href="AdminAddJobTitleForm.php">Add Job Title </a><br />
-                </div>
-            </div>
-			
-			
-			
-			
-		<li><a href="logout.php" class="arrow">Logout</a>
-    
-			
-			 
-            
- 
-</ul>
+        	<ul>
+            	<li id="active"><a href="">Administrator</a></li>
+                <li><a href ="Patient.html">Patient</a></li>
+                <li><a href="">Employee</a></li>
+                <li><a href="">About us</a></li>
+            </ul>
         </div>
         <div class="headerPic">
         	<div class="pics">
            	  <div class="pic1">
-                	&nbsp;<span>New</span><br />&nbsp;&nbsp;&nbsp;&nbsp;Technology<br /><br /><br /><br /><a href=""></a>
+                	&nbsp;<span>Admin</span><br />&nbsp;&nbsp;&nbsp;&nbsp;technologies<br /><br /><br /><br /><a href=""><img src="images/detailsButton.jpg" alt="" width="66" height="26" /></a>
                 </div>
-              <div class="pic2">
-                	&nbsp;<span>New</span><br />&nbsp;&nbsp;&nbsp;&nbsp;Environment<br /><br /><br /><br /><a href=""></a>
+                <div class="pic2">
+                	&nbsp;<span>Patient</span><br />&nbsp;&nbsp;&nbsp;&nbsp;locations<br /><br /><br /><br /><a href=""><img src="images/detailsButton.jpg" alt="" width="66" height="26" /></a>
                 </div>
                 <div class="pic3">
-                	&nbsp;<span>New</span><br />&nbsp;&nbsp;&nbsp;&nbsp;Equioment<br /><br /><br /><br /><a href=""></a>
+                	&nbsp;<span>Employee</span><br />&nbsp;&nbsp;&nbsp;&nbsp;treatments<br /><br /><br /><br /><a href=""><img src="images/detailsButton.jpg" alt="" width="66" height="26" /></a>
                 </div>
             </div>
         </div>
     </div>
     <!-- end #header -->
-	<form  method = "POST" action="direct.php">
     <div class="allContent">
         <!-- begin #sidebar1 -->
-
+        <div id="sidebar1">
+            <div class="loginTitle"><div class="lT">Login place</div></div>
+            <div class="loginBody">
+          	  <form action = "admin.html" >
+           	  <br />
+            	Login:<br />
+                <input name="" type="text" /><br /><br />
+                Password:<br />
+                <input name="" type="text" /><br /><br />
+                <div class="fr"><a href ="../forgot-password2.php">Forgot password?</a><br />
+                <a href=""></a></div>
+                <div class="ls"><a href=""><input type="image" alt = "submit" href = "admin.html" src="images/submit-button-blue-hi.png" alt="" width="66" height="26" /></a></div>
+				</form>
+            </div>
+            <div class="loginFooter"></div>
+        </div>
         <!-- end #sidebar1 -->
         <!-- begin #mainContent -->
         <div id="mainContent">
