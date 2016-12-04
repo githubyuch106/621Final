@@ -6,19 +6,11 @@
 <title>Hospital</title>
 <link href="styles.css" rel="stylesheet" type="text/css" />
 <link href="drop.css" rel="stylesheet" type="text/css" />
-<!--[if IE 5]>
-<style type="text/css"> 
-/* place css box model fixes for IE 5* in this conditional comment */
-#sidebar1 { width: 230px; }
-</style>
-<![endif]--><!--[if IE]>
-<style type="text/css"> 
-/* place css fixes for all versions of IE in this conditional comment */
-#sidebar1 { padding-top: 30px; }
-#mainContent { zoom: 1; }
-/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
-</style>
-<![endif]-->
+<script language="JavaScript" type="text/javascript">
+function checkDelete(){
+    return confirm('Are you sure?');
+}
+</script>
 </head>
 <body>
 <!-- begin #container -->
@@ -173,7 +165,7 @@ if ($result->num_rows > 0) {
 	   echo "<td>$Salary</td>";
 	   echo "<td>$JobTitle</td>";
 	   echo "<td colspan='2'>". "<a href = 'AdminEditEmployee.php?Edit=$row[EmpID]'>Edit</a>".  "</td>";
-	   echo "<td colspan='2'>". "<a href = 'AdminDeleteEmployee.php?Delete=$row[EmpID]'>Delete</a>".  "</td>";
+	    echo "<td colspan='2'>". "<a onclick='return checkDelete()' href='AdminDeleteEmployee.php?Delete=$row[EmpID]' >Delete</a>".  "</td>";
 	  
 	   //echo "<br>";
 	   echo "</tr>";
