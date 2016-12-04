@@ -19,7 +19,7 @@ if ($table == 'patient') {
 	die("You must choose employee or patient");
 }
 
-@$query = "SELECT SecurityQuestion FROM $table WHERE $id_col = '" . mysql_real_escape_string($id)  . "'";
+@$query = "SELECT SecurityQuestion FROM $table WHERE $id_col = $id";
 
 $result = mysqli_query($connection, $query);
 

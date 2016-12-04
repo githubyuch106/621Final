@@ -21,7 +21,7 @@ if ($table == 'patient') {
 	die("Invalid table $table");
 }
 
-@$query = "SELECT SecurityAnswer FROM $table WHERE $id_col = '" . mysql_real_escape_string($id)  . "'";
+@$query = "SELECT SecurityAnswer FROM $table WHERE $id_col = $id";
 
 $result = mysqli_query($connection, $query);
 
@@ -38,14 +38,14 @@ if ($row = $result->fetch_assoc()) {
 		die("Passwords don't match!");
 	}
 
-	if (!mysqli_query($connection, "UPDATE $table SET Password = '" . mysql_real_escape_string($password) . "' WHERE $id_col = '" . mysql_real_escape_string($id) . "'")) {
+	if (!mysqli_query($connection, "UPDATE $table SET Password = '$password' WHERE $id_col = $id")) {
 		die("Update failed: " . mysqli_errno($connection));
 	}
 } else {
 	die('There is no user with that ID');
 }
 
-echo 'Your password was successfuly reset!  Log back in <a href="/project">here</a>.';
+echo 'Your password was successfuly reset!  Log back in <a href=".">here</a>.';
 ?>
 </form>
 </body>
