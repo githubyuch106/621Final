@@ -74,7 +74,7 @@
 			            <div class='left'>
 			                <div>
 			                    <a href="settings.php">Change Password</a><br/>
-			                    <a href="Edit.php">Edit Doctor Info</a><br/>
+			                    <a href="EditDoctor.php">Edit Doctor Info</a><br/>
 			                </div>
 			            </div>
 			      
