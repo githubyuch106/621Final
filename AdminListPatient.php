@@ -6,6 +6,13 @@ session_start();
 
 ?>
 <html>
+<head>
+<script language="JavaScript" type="text/javascript">
+function checkDelete(){
+    return confirm('Are you sure?');
+}
+</script>
+</head>
 <body>
 <div class="logo">
             	<a href=""><img src="/621Final/images/Saint_Joseph's_University_seal.png" alt="" width="80" height="80" /></a> Team 8<br><span>Hospital Database Management</span>
@@ -98,7 +105,7 @@ if ($result->num_rows > 0) {
 	   echo "<td>$Height</td>";
 	   echo "<td>$Vitals</td>";
 	   echo "<td colspan='2'>". "<a href = 'AdminEditPatient.php?Edit=$row[PatientID]'>Edit</a>".  "</td>";
-	   echo "<td colspan='2'>". "<a href = 'AdminDeletePatient.php?Delete=$row[PatientID]'>Delete</a>".  "</td>";
+	    echo "<td colspan='2'>". "<a onclick='return checkDelete()' href='AdminDeletePatient.php?Delete=$row[PatientID]' >Delete</a>".  "</td>";
 	   //echo "<br>";
 	   echo "</tr>";
 		
