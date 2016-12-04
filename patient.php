@@ -1,62 +1,6 @@
-
-<?php
-session_start();
-?>
-
+<?php session_start(); ?>
 <html>
-<link href="styles.css" rel="stylesheet" type="text/css" />
-<link href="drop.css" rel="stylesheet" type="text/css" />
 <body>
-<div id="container">
-	<!-- begin #header -->
-    <div id="header">
-		<div class="headerTop">
-        	<div class="logo">
-            	<a href=""><img src="images/Saint_Joseph's_University_seal.png" alt="" width="80" height="80" /></a>Team 8 <span>Hospital Management System</span>
-            	
-            </div>
-            
-            <div class="search">
-            Patient Portal
-             </div>
-            </div>
-      	</div>
-      	<div class="mainMenu">
-        <ul class="menuTemplate1 decor1_1" license="mylicense">
-    <li class="separator"></li>
-    <li><a href="patientProfile.php" class="arrow">Profile</a>
-       <li><a href = "patientReport.php" class = "arrow">Report</a>
-		<li><a href="logout.php" class="arrow">Logout</a>
-    
-			
-			 
-            
- 
-</ul>
-        </div>
-        <div class="headerPic">
-        	<div class="pics">
-           	  <div class="pic1">
-                	&nbsp;<span>New</span><br />&nbsp;&nbsp;&nbsp;&nbsp;Technology<br /><br /><br /><br /><a href=""></a>
-                </div>
-              <div class="pic2">
-                	&nbsp;<span>New</span><br />&nbsp;&nbsp;&nbsp;&nbsp;Environment<br /><br /><br /><br /><a href=""></a>
-                </div>
-                <div class="pic3">
-                	&nbsp;<span>New</span><br />&nbsp;&nbsp;&nbsp;&nbsp;Equioment<br /><br /><br /><br /><a href=""></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end #header -->
-	<form  method = "POST" action="direct.php">
-    <div class="allContent">
-        <!-- begin #sidebar1 -->
-
-        <!-- end #sidebar1 -->
-        <!-- begin #mainContent -->
-  
-<!-- 
 <form action="logout.php">
     <input type="submit" value="LogOut" />
 </form>
@@ -64,10 +8,8 @@ session_start();
 <form action="patientProfile.php">
     <input type="submit" value="Profile" />
 </form>
- -->
 </body>
 </html>
-<!-- 
 <?php
 
 require 'common.php';
@@ -77,17 +19,15 @@ if ($connection->connect_error) {
 	echo "No Connection to DB";
 } 
 //echo "Connected successfully";
-echo "<pre>";
+//echo "<pre>";
 $PatientID = $_SESSION['PatientID'];
 //echo $PatientID;
-echo "<pre>";
 
 //==============================================================================================================
 	 $quiry1 = "SELECT * from report WHERE PatientID = '$PatientID'";
 
 	 $result1 = mysqli_query($connection, $quiry1);
 //echo $result;
-echo "<pre>";
 if (!$result1)
 {
 	
@@ -95,32 +35,84 @@ if (!$result1)
 }
 
 if ($result1->num_rows > 0) {
-    // output data of each row
-	echo "<table align='left' width='20%' height='20%'>";
-	
-	   echo "<tr>";
-	   echo "<td>Report</td>";
-	 
-		echo "</tr>";
-    while($row = $result1->fetch_assoc()) {
-	   $Description = $row['Description'];
-       echo "<tr>";
-       echo "<td>$Description</td>";
+	// output data of each row
+	echo "<table width='20%' height='20%'>";
 
-	
-      echo "<td colspan='2'>". "<a href = 'patientListMedicine.php?ReportID=$row[ReportID]'>Medicine</a>".  "</td>";
-	   //echo "<br>";
-	   echo "</tr>";
-		
-    }
+	echo "<tr>";
+	echo "<td>Report</td>";
+
+	echo "</tr>";
+	while($row = $result1->fetch_assoc()) {
+	$Description = $row['Description'];
+	echo "<tr>";
+	echo "<td>$Description</td>";
+
+
+	echo "<td colspan='2'>". "<a href = 'patientListMedicine.php?ReportID=$row[ReportID]'>Medicine</a>".  "</td>";
+	//echo "<br>";
+	echo "</tr>";
+
+	}
 } else {
-	
-		echo "There is no Report";
-		//header("location:regist.html");
+	echo "There is no Report";
+	//header("location:regist.html");
 
-    //echo "0 results";
-	echo "</table>";
+	//echo "0 results";
+}
+echo "</table>";
+//echo "</pre>";
+
+function minute_to_time($min) {
+	$hour = floor($min / 60);
+	$postmark = $hour >= 12 ? 'PM' : 'AM';
+	$hour = $hour % 12;
+	if ($hour == 0) {
+		$hour = 12;
+	}
+
+	return sprintf("%d:%02d %s", $hour, $min % 60, $postmark);
 }
 
+$id = $_SESSION['PatientID'];
 ?>
- -->
+<h2>Appointments</h2>
+<?php
+$q = $connection->prepare('SELECT VisitID, UNIX_TIMESTAMP(Time), Lname FROM appointment JOIN employee USING (EmpID) WHERE PatientID = ?');
+$q->bind_param('s', $id);
+$q->execute();
+$q->bind_result($appt_id, $time, $dr_name);
+?>
+<form method="POST" action="cancel-appointment.php">
+<table>
+<thead>
+<tr><th></th><th>Date/Time</th><th>Doctor</th></tr>
+</thead>
+<tbody>
+<?php while ($q->fetch()): ?>
+<tr><td><input type="radio" name="appt_id" value="<?= $appt_id ?>"></td><td><?= date('j F Y g:i a', $time) ?></td><td>Dr. <?= $dr_name ?></td></tr>
+<?php endwhile ?>
+</tbody>
+</table>
+<p><input type="submit" name="submit" value="Cancel"></p>
+</form>
+
+<h2>Create Appointment</h2>
+<?php
+$q = $connection->prepare('SELECT EmpID, Lname FROM employee WHERE JobTitle = \'Doctor\'');
+$q->execute();
+$q->bind_result($id, $lname);
+?>
+<form method="POST" action="create-appointment.php">
+<p><label>Date:</label> <input type="text" name="Date"></p>
+<p><label>Time:</label> <select name="Time">
+<?php for ($minute = 60*8; $minute <= 60*19; $minute += 30): ?>
+	<option value="<?= $minute*60 ?>"><?= minute_to_time($minute) ?></option>
+<?php endfor ?>
+</select></p>
+<p><label>Doctor: <select name="EmpID">
+<?php while ($q->fetch()): ?>
+<option value="<?= $id ?>">Dr. <?= $lname ?></option>
+<?php endwhile ?>
+</select></p>
+<p><input type="submit" value="Create appointment"></p>
+</form>
