@@ -8,7 +8,7 @@
 
 <body>
 
-<h2>New Patient</h2>
+<h2>New Room</h2>
 
 <form  method = "POST" action="addRoom.php">
 
