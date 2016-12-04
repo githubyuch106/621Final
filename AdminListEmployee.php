@@ -165,8 +165,11 @@ if ($result->num_rows > 0) {
 	   echo "<td>$Salary</td>";
 	   echo "<td>$JobTitle</td>";
 	   echo "<td colspan='2'>". "<a href = 'AdminEditEmployee.php?Edit=$row[EmpID]'>Edit</a>".  "</td>";
-	    echo "<td colspan='2'>". "<a onclick='return checkDelete()' href='AdminDeleteEmployee.php?Delete=$row[EmpID]' >Delete</a>".  "</td>";
-	  
+	   if ($JobTitle !== "Admin"){
+		   echo "<td colspan='2'>". "<a onclick='return checkDelete()' href='AdminDeleteEmployee.php?Delete=$row[EmpID]' >Delete</a>";
+	   }
+	   
+	   echo "</td>";
 	   //echo "<br>";
 	   echo "</tr>";
 	   echo "</tbody>";
