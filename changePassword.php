@@ -1,17 +1,13 @@
 <?php
-	session_start();
+        session_start();
+        require 'doctorSession.php';
 
-	//Make sure page cant be accessed without logging in
-    if(!isset($_SESSION['EmpID'])) {
-        header("Location: home.html");
-    }
-
-	$empID = $_SESSION['EmpID'];
+	$empID = $_SESSION['aEmpID'];
 	$pword = $_POST['password'];
 
 	
 	$localhost = 'localhost';
-    $username = 'root';
+        $username = 'root';
 	$password = 'root';
 	$database = 'hospital';
 
