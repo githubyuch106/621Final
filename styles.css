@@ -3,14 +3,18 @@
 	padding:0;
 }
 body  {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-	color:#505a5d;
-	background: #FFF url(images/templateBackground.jpg) repeat-x left top;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #505a5d;
+	background-repeat: repeat;
+	background-position: left top;
+	background-image: url(images/templateBackground.jpg);
+	background-color: #FFF;
 }
 h1 {
-	color:#2f9dea;
-	font-size:14px;
+	color: #2f9dea;
+	font-size: 14px;
+	margin-right: -45px;
 }
 a {
 	color:#5caddc;
@@ -29,12 +33,18 @@ a:hover {
 
 }
 .headerTop {
+	margin-top: 5px;
 }
 .logo {
-	float:left;
-	color:#00b0e4;
-	font-size:48px;
-	padding:10px 0 0 20px;
+	float: left;
+	color: #00b0e4;
+	font-size: 48px;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-bottom: 0;
+	/* [disabled]background-color: #01040A; */
+	border-radius: 15px;
 }
 .logo span {
 	font-size:18px;
@@ -59,10 +69,10 @@ a:hover {
 	padding-top:10px;
 }
 .mainMenu {
-	margin-top:10px;
-	background:url(images/menuBackground.jpg) repeat-x left top;
-	height:54px;
-	text-align:center;
+	margin-top: 80px;
+	background: url(images/menuBackground.jpg) repeat-x left top;
+	height: 54px;
+	text-align: center;
 }
 .mainMenu ul {
 	margin:0;
@@ -89,13 +99,15 @@ a:hover {
 	text-decoration:none;
 }
 .headerPic {
-	background:url(images/headerBackground.jpg) no-repeat left top;
-	height:317px;
-	margin-bottom:230px;
+	background: url(images/headerBackground.jpg) no-repeat left top;
+	height: 200px;
+	padding-bottom: 0px;
 }
 .pics {
-	padding:280px 0 0 0;
-	margin-bottom:20px;
+	padding-top: 200px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 0;
 }
 .pic1 {
 	width:289px;
@@ -107,12 +119,13 @@ a:hover {
 	font-size:36px;
 }
 .pic1 span, .pic2 span, .pic3 span {
-	color:#27418c;
+	color: #27418c;
+	padding-top: 0px;
 }
 .pic1 img, .pic2 img, .pic3 img {
-	border:0;
-	float:right;
-	padding-right:20px;
+	border: 0;
+	float: right;
+	padding-right: 20px;
 }
 .pic2 {
 	width:289px;
@@ -172,9 +185,12 @@ input {
 	height:21px;
 	width:269px;
 }
-#mainContent { 
-	margin: 0 0 0 269px;
-	padding:0 30px;
+#mainContent {
+	margin-right: 0;
+	margin-left: 269px;
+	margin-bottom: 0;
+	padding: 0 30px;
+	margin-top: 256px;
 } 
 #footer {
 	height:85px;
@@ -188,4 +204,10 @@ input {
     height:0;
     font-size: 1px;
     line-height: 0px;
+}
+
+.doctorReport{
+color: black;
+background: white;
+margin-top: -100px;
 }
