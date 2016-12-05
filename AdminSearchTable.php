@@ -1,7 +1,4 @@
 <?php
-	//  ini_set('display_errors', 1);
-	// ini_set('display_startup_errors', 1);
-	//  error_reporting(E_ALL);
 	session_start();
 	require 'adminSession.php';
 	$whoSearch = $_REQUEST["whoSearch"];
@@ -14,7 +11,7 @@
 	$secondCondition = $_REQUEST["secondCondition"];
 	$secondValue = $_REQUEST["secondValue"];
 
-    if($whoSearch == "Employees"){
+    	if($whoSearch == "Employees"){
 
 		if($firstCriteria == "Salary"  && $firstCondition != "=" ){
 
@@ -42,38 +39,26 @@
 
 	function buildTable($query, $whoSearch){
 
-	  	$localhost = 'localhost';
-		$username = 'root';
-		$password = 'root';
-		$database = 'hospital';
+	  	require 'common.php';
+		$connection = new mysqli($localhost , $dusername , $dpassword,$database);
+		if ($connection->connect_error) {
+		    die("Connection failed: " . $conn->connect_error);
+			echo "No Connection to DB";
+		} 
 
-		//*** create a connection object
-		$connection = mysql_connect($localhost, $username, $password)
-				or die (mysql_error());
+    		$result = mysqli_query($connection, $query);
 
-		mysql_select_db($database)
-				or die (mysql_error());
-
-		//*** execute the query
-		$result = mysql_query($query);
-
-		//*** die if no result
-		if (!$result)
-			 die("Search Invalid");
-
-
-
-		//*** return query results in a string
 		$query_result = "<table class='zui-table zui-table-zebra zui-table-horizontal' border=0 cellspacing=10  width=500 align=left>\n";
 
 		$query_result = $query_result . "<tr align=Center>";
-		for ($i = 0; $i<mysql_num_fields($result); $i++)
-			$query_result = $query_result . "<th style=\"color: black\">" . ucfirst(mysql_field_name($result, $i)) . "</th>";
+		$fieldinfo = mysqli_fetch_fields($result);
+		foreach ($fieldinfo as $val)
+			$query_result = $query_result . "<th style=\"color: black\">" . ucfirst($val->name) . "</th>";
 		$query_result = $query_result . "</tr>";
 		$check=$query_result;
         
-        //*** background colors for printing
-		while ($row = mysql_fetch_row($result)) {	
+
+		while ($row = mysqli_fetch_row($result)) {	
 	
 	        $query_result = $query_result . "<tr bgcolor='white'>\n";
 
@@ -88,7 +73,7 @@
 	        $count=0;
 
 	        if($whoSearch == "Employees"){
-		        $query_result = $query_result . "<td colspan='2'>". "<a href = 'AdminEditEmployee.php?Edit=".$id."'>Edit</a>".  "</td>";
+		        $query_result = $query_result . "<td colspan='2'>". "<a hsref = 'AdminEditEmployee.php?Edit=".$id."'>Edit</a>".  "</td>";
 		   		$query_result = $query_result ."<td colspan='2'>". "<a href = 'AdminDeleteEmployee.php?Delete=".$id."'>Delete</a>".  "</td>";
 	   	    }
 
@@ -108,12 +93,6 @@
 			$result = "<br><p>Search Not found<p/>";
 			return $result;
 		}
-
-		//*** Free the resources associated with the result
-		mysql_free_result($result);
-
-		//*** close this connection
-		mysql_close($conn);
 
 		return $query_result;
     }
