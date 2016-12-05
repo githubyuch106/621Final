@@ -12,7 +12,9 @@
 	if ($connection->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 		echo "No Connection to DB";
-	} 
+	}
+
+	$change = mysqli_query($connection, $query);
 	
 	$_SESSION['PassChanged'] = 1;
 
