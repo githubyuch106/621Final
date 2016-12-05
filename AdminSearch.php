@@ -48,13 +48,12 @@
   <!-- begin #header -->
     <div id="header">
     <div class="headerTop">
-          <div class="logo">
-              <a href=""><img src="images/logo.png" alt="" width="179" height="77" /></a>AMS <span>the best technologies</span>
+           <div class="logo">
+              <a href=""><img src="images/Saint_Joseph's_University_seal.png" alt="" width="80" height="80" /></a>Team 8 <span>the best</span>
             </div>
             <div class="search">
-                Product search:<br />
-                <div class="si"><input name="" type="text" /></div><div><a href=""><img src="images/searchButton.jpg" alt="" width="66" height="26" /></a></div>
-            </div>
+                Admin Portal
+                   </div>
         </div>
         <div class="mainMenu">
         <ul class="menuTemplate1 decor1_1" license="mylicense">
@@ -136,7 +135,7 @@
             </tr>
             <tr>
                   <td>
-                      For Empolyees:
+                      For Employees:
                   </td>
                   <td>
                       <select id="firstCriteria" >
