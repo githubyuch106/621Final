@@ -15,13 +15,15 @@
         <div id="header">
         <div class="headerTop">
               <div class="logo">
-                  <a href=""><img src="images/logo.png" alt="" width="179" height="77" /></a>AMS <span>the best technologies</span>
-                </div>
-                <div class="search">
-                    Product search:<br />
-                    <div class="si"><input name="" type="text" /></div><div><a href=""><img src="images/searchButton.jpg" alt="" width="66" height="26" /></a></div>
-                </div>
-            </div>
+                <a href=""><img src="images/Saint_Joseph's_University_seal.png" alt="" width="80" height="80" /></a>Team 8 <span>Hospital Management System</span>                
+              </div>
+              <div class="search">
+                Doctor Portal    
+              </div>
+              <br>
+              <br>
+              <br>
+          </div>
             <div class="mainMenu">
             <ul class="menuTemplate1 decor1_1" license="mylicense">
         <li class="separator"></li>
@@ -54,7 +56,7 @@ $name = addslashes($_FILES['image']['name']);
 
 $query3 = "update employee set Fname = '$Fname', Lname = '$Lname', PhoneNumber = '$PhoneNumber', image = '$image', name = '$name' where EmpID='$EmpID'";
 $record = mysqli_query($connection, $query3);
-	echo "<meta http-equiv='refresh' content = '0;url=AdminListEmployee.php'>";
+	echo "<meta http-equiv='refresh' content = '0;url=EditDoctor.php'>";
 }
 
 $query2=mysqli_fetch_array($query1);
