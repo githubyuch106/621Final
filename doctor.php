@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    //require 'doctorSession.php';
+    require 'doctorSession.php';
 
 ?>
 
@@ -28,7 +28,7 @@
 
              function ajaxFunction() {
 
-                  var URL = "http://localhost/621Final/doctorTable.php";
+                  var URL = "http://localhost:8888/621Final-master//doctorTable.php";
                   var queryString = "searchBy=" + document.getElementById("searchBy").value +"&search="+ document.getElementById("search").value;
 
                   xmlhttp.open("POST", URL, true);
@@ -48,12 +48,39 @@
 	    <div id="header">
 	    <div class="headerTop">
 	          <div class="logo">
-	              <a href=""><img src="images/logo.png" alt="" width="179" height="77" /></a>AMS <span>the best technologies</span>
+	              <a href=""><img src="images/Saint_Joseph's_University_seal.png" alt="" width="80" height="80" /></a>Team 8 <span>Hospital Management System</span>
 	            </div>
 	            <div class="search">
-	                Product search:<br />
-	                <div class="si"><input name="" type="text" /></div><div><a href=""><img src="images/searchButton.jpg" alt="" width="66" height="26" /></a></div>
-	            </div>
+              Doctor Portal
+               <?php
+                session_start();
+                require 'common.php';
+                $connection = new mysqli($localhost , $dusername , $dpassword,$database);
+                if ($connection->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                  echo "No Connection to DB";
+                } 
+                //echo "Connected successfully";
+                echo "<pre>";
+
+                $aEmpID = $_SESSION['aEmpID'];
+                //echo $aEmpID;
+
+                $FineEmpName = mysqli_query($connection,"SELECT Fname , Lname FROM employee WHERE EmpID = '$aEmpID'");
+                 $row = mysqli_fetch_array($FineEmpName,MYSQLI_ASSOC);
+                   
+                 $EmpFname = $row['Fname'];
+                 $EmpLname = $row['Lname'];
+                   
+                   echo "Welcome Dr. ";
+                   echo $EmpFname;
+                   echo " ";
+                   echo $EmpLname;
+                   
+              ?>
+             </div>
+             <br>
+             <br>
 	     </div>
 	     <div class="mainMenu">
 	      <ul class="menuTemplate1 decor1_1" license="mylicense">
@@ -77,8 +104,8 @@
 
 	    <!-- end #header -->
 
-	<h2>Doctor Page</h2>
-	<br>
+	    <h2>Doctor Page</h2>
+	    <br>
         <form name="PaitentTableFrom">
 
             <input type="text" id="search" placeholder="Search for Patients" onKeyUp="ajaxFunction()"/>
