@@ -75,7 +75,14 @@ function checkDelete(){
 					<a href="AdminAddJobTitleForm.php">Add Job Title </a><br />
                 </div>
             </div>
-			
+	
+		<li><a href="#Horizontal-Menus" class="arrow">Search</a>
+        <div class="drop decor1_2" style="width: 150px;">
+            <div class='left'>
+                <div>
+                    <a href="AdminSearch.php">Search For Users</a><br/>
+                </div>
+            </div>
 			
 			
 			
