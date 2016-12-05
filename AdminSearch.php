@@ -28,7 +28,7 @@
 
              function ajaxFunction() {
 
-                  var URL = "http://localhost:8888/621Final/AdminSearchTable.php";
+                  var URL = "http://localhost/621Final/AdminSearchTable.php";
                   var queryString = "whoSearch=" + document.getElementById("whoSearch").value;
                   queryString = queryString + "&firstCriteria="+ document.getElementById("firstCriteria").value+"&firstCondition="+ document.getElementById("firstCondition").value+"&firstValue="+ document.getElementById("firstValue").value;
                   queryString = queryString + "&secondCriteria="+ document.getElementById("secondCriteria").value+"&secondCondition="+ document.getElementById("secondCondition").value+"&secondValue="+ document.getElementById("secondValue").value;  
