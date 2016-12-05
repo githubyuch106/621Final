@@ -1,50 +1,38 @@
 <?php
 	session_start();
-	require 'doctorSession.php';
 
 	$EmpID = $_SESSION['aEmpID'];
 	$search = $_REQUEST["search"];
 	$searchBy = $_REQUEST["searchBy"];
 	
 	$query = "SELECT  PatientID , Fname , Lname , BloodType , Sex , Weight , Height , Vitals  from patient where EmpID = '$EmpID' and $searchBy like '%$search%'";
-        $result= buildTable($query);
+    	$result= buildTable($query);
 	print($result);
 
 	function buildTable($query){
 
-	  	$localhost = 'localhost';
-		$username = 'root';
-		$password = 'root';
-		$database = 'hospital';
 
-		//*** create a connection object
-		$connection = mysql_connect($localhost, $username, $password)
-				or die (mysql_error());
+		require 'common.php';
+		$connection = new mysqli($localhost , $dusername , $dpassword,$database);
+		if ($connection->connect_error) {
+		    die("Connection failed: " . $conn->connect_error);
+			echo "No Connection to DB";
+		} 
 
-		mysql_select_db($database)
-				or die (mysql_error());
+    		$result = mysqli_query($connection, $query);
 
-		//*** execute the query
-		$result = mysql_query($query);
-
-		//*** die if no result
-		if (!$result)
-			 die("Query Failed.");
-
-
-
-		//*** return query results in a string
 		$query_result = "<table class='zui-table zui-table-zebra zui-table-horizontal' border=0 cellspacing=10  width=500 align=left>\n";
 
 		$query_result = $query_result . "<tr align=Center>";
-		for ($i = 0; $i<mysql_num_fields($result); $i++)
-			$query_result = $query_result . "<th style=\"color: black\">" . ucfirst(mysql_field_name($result, $i)) . "</th>";
+		$fieldinfo = mysqli_fetch_fields($result);
+		foreach ($fieldinfo as $val)
+			$query_result = $query_result . "<th style=\"color: black\">" . ucfirst($val->name) . "</th>";
 		$query_result = $query_result . "</tr>";
 		$check=$query_result;
 
 		$count=0;
 
-		while ($row = mysql_fetch_row($result)) {	
+		while ($row = mysqli_fetch_row($result)) {	
 	
 	        $query_result = $query_result . "<tr bgcolor='white'>\n";
 
@@ -72,13 +60,6 @@
 			return $result;
 		}
 
-
-
-		//*** Free the resources associated with the result
-		mysql_free_result($result);
-
-		//*** close this connection
-		mysql_close($conn);
 
 		return $query_result;
     }
