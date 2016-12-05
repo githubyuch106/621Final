@@ -28,7 +28,7 @@
 
              function ajaxFunction() {
 
-                  var URL = "http://localhost:8888/621Final-master//doctorTable.php";
+                  var URL = "http://localhost/621Final/doctorTable.php";
                   var queryString = "searchBy=" + document.getElementById("searchBy").value +"&search="+ document.getElementById("search").value;
 
                   xmlhttp.open("POST", URL, true);
