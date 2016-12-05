@@ -136,7 +136,7 @@
             </tr>
             <tr>
                   <td>
-                      For Doctors:
+                      For Empolyees:
                   </td>
                   <td>
                       <select id="firstCriteria" >
