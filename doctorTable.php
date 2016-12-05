@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require 'doctorSession.php';
 
 	$EmpID = $_SESSION['aEmpID'];
 	$search = $_REQUEST["search"];
@@ -63,7 +64,5 @@
 
 		return $query_result;
     }
-
-
 
 ?>
