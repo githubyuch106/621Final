@@ -1,5 +1,6 @@
 <?php
-	//Make sure page cant be accessed without logging in
+	session_destroy();
+
 	if(!isset($_SESSION['PatientID'])) {
 		echo "<script  type='text/javascript'>
 	                alert('Access Denied. Please Sign in as a Patient.');
@@ -8,4 +9,5 @@
 	    header("Location: index.html");
 
 	}
+
 ?>
