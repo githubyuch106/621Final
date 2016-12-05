@@ -7,7 +7,7 @@
 	                alert('Access Denied. Please Sign in as a Doctor.');
 	                window.location = 'index.html';
 	            </script>";
-	    header("Location: index.html");
+	    header("Location: newindex.html");
 
 	}
 
