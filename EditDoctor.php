@@ -31,14 +31,18 @@
             </ul>
             
         </div>
+
 <?php
-//include('config.php');
-$query=mysql_connect("localhost","root","root");
-mysql_select_db("hospital",$query);
+require 'common.php';
+$connection = new mysqli($localhost , $dusername , $dpassword,$database);
+if ($connection->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+  echo "No Connection to DB";
+} 
 if(isset($_SESSION['aEmpID']))
 {
 $EmpID=$_SESSION['aEmpID'];
-$query1=mysql_query("select * from employee WHERE EmpID = '$EmpID'");
+$query1=mysqli_query($connection, "select * from employee WHERE EmpID = '$EmpID'");
 
 if(isset($_POST['submit']))
 {
@@ -49,11 +53,11 @@ $image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
 $name = addslashes($_FILES['image']['name']);
 
 $query3 = "update employee set Fname = '$Fname', Lname = '$Lname', PhoneNumber = '$PhoneNumber', image = '$image', name = '$name' where EmpID='$EmpID'";
-$record = mysql_query($query3) or print(mysql_error());
+$record = mysqli_query($connection, $query3);
 	echo "<meta http-equiv='refresh' content = '0;url=AdminListEmployee.php'>";
 }
 
-$query2=mysql_fetch_array($query1);
+$query2=mysqli_fetch_array($query1);
 ?>
 
 <h3>Edit Info</h3>
