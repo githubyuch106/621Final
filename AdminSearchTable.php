@@ -46,7 +46,7 @@
 			echo "No Connection to DB";
 		} 
 
-    	$result = mysqli_query($connection, $query);
+    		$result = mysqli_query($connection, $query);
 
 		$query_result = "<table class='zui-table zui-table-zebra zui-table-horizontal' border=0 cellspacing=10  width=500 align=left>\n";
 
@@ -57,7 +57,6 @@
 		$query_result = $query_result . "</tr>";
 		$check=$query_result;
         
-        //*** background colors for printing
 		while ($row = mysqli_fetch_row($result)) {	
 	
 	        $query_result = $query_result . "<tr bgcolor='white'>\n";
