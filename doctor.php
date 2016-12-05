@@ -1,17 +1,7 @@
 <?php
 
     session_start();
- 	require 'doctorSession.php';
-
-    //Make sure page cant be accessed without logging in
-    if(!isset($_SESSION['aEmpID'])) {
-    	echo "<script  type='text/javascript'>
-                    alert('Access Denied');
-                    window.location = 'index.html';
-                </script>";
-        header("Location: index.html");
-
-    }
+    require 'doctorSession.php';
 
 ?>
 
@@ -87,8 +77,8 @@
 
 	    <!-- end #header -->
 
-	    <h2>Doctor Page</h2>
-	    <br>
+	<h2>Doctor Page</h2>
+	<br>
         <form name="PaitentTableFrom">
 
             <input type="text" id="search" placeholder="Search for Patients" onKeyUp="ajaxFunction()"/>
