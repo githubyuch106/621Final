@@ -18,11 +18,13 @@ $Weight = $_POST['Weight'];
 $Height = $_POST['Height'];
 $Vitals = $_POST['Vitals'];
 $Password = $_POST['Password'];
+$SecurityQuestion = $_POST['SecurityQuestion'];
+$SecurityAnswer = $_POST['SecurityAnswer'];
 $image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
 $name = addslashes($_FILES['image']['name']);
 
          $quiry = "INSERT INTO `patient`(`Fname`, `Lname`, `Address`, `BloodType`,`Sex` , `Weight`, `Height`,`EmpID`, `Vitals`, `Password`,`ReportID`,`RoomID`,`VisitID`,`SecurityQuestion` , `SecurityAnswer`, `Email`, `image` ,`name`)";
-          $quiry.= "VALUES              ('$Fname','$Lname','$Address','$BloodType','$Sex' , '$Weight','$Height', NULL, '$Vitals','$Password',NULL,     NULL,      NULL,      NULL,               NULL,       '$Email','$image' ,'$name' )";
+          $quiry.= "VALUES              ('$Fname','$Lname','$Address','$BloodType','$Sex' , '$Weight','$Height', NULL, '$Vitals','$Password',NULL,     NULL,      NULL,     '$SecurityQuestion',         '$SecurityAnswer',       '$Email','$image' ,'$name' )";
 
 $result = mysqli_query($connection, $quiry);
 
