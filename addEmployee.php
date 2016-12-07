@@ -13,6 +13,8 @@ $Salary = $_POST['Salary'];
 $Email = $_POST['Email'];
 $JobTitle = $_POST['JobTitle'];
 $Password = $_POST['Password'];
+$SecurityQuestion = $_POST['SecurityQuestion'];
+$SecurityAnswer = $_POST['SecurityAnswer'];
 
     $image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
 	$name = addslashes($_FILES['image']['name']);	
@@ -20,7 +22,7 @@ $Password = $_POST['Password'];
 	//echo $name;
 
    $quiry = "INSERT INTO `employee`( `SSN`, `Fname`, `Lname`, `PhoneNumber`, `Salary`, `Password`, `JobTitle`,`SecurityQuestion` , `SecurityAnswer`, `Email` , `image` , `name`)";
- $quiry.=                 "VALUES('$SSN','$Fname','$Lname','$PhoneNumber','$Salary','$Password','$JobTitle' ,      NULL,                NULL,        '$Email' ,'$image' ,'$name')";
+ $quiry.=                 "VALUES('$SSN','$Fname','$Lname','$PhoneNumber','$Salary','$Password','$JobTitle' , '$SecurityQuestion',     '$SecurityAnswer',        '$Email' ,'$image' ,'$name')";
 $result = mysqli_query($connection, $quiry);
 if (!$result)
 {
